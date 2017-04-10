@@ -1,0 +1,21 @@
+machine:
+  environment:
+    USER_NAME: adeelahmad84
+    USER_EMAIL: adeelahmad84@me.com
+  ruby:
+    version: 2.4.0
+
+dependencies:
+  pre:
+    - ./bin/setup
+
+test:
+  post:
+    - bundle exec jekyll build
+    - bundle exec htmlproofer ./_site --only-4xx --allow-hash-href
+
+deployment:
+  production:
+    branch: master
+    commands:
+      - ./bin/automated
