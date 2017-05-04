@@ -6,12 +6,11 @@ machine:
     version: 2.4.0
 
 dependencies:
-  pre:
-    - ./bin/setup
+  post:
+    - bundle exec jekyll build
 
 test:
   post:
-    - bundle exec jekyll build
     - bundle exec htmlproofer ./_site --only-4xx --allow-hash-href
 
 deployment:
